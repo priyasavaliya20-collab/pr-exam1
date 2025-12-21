@@ -1,72 +1,69 @@
 print("Welcome to Personal Journal Manager!")
 print("Please select an option.")
 
+
 from datetime import datetime
+import os
+
 
 class journalmanager:
-    def __init__(self, filename="journal.txt"):
-        self.filename = filename
+    def __init__(self):
+        self.filename = "journal.txt"
 
     def add_entry(self):
         try:
             entry = input("Enter your journal entry:\n")
             time = datetime.now().strftime("[%Y-%m-%d %H:%M:%S]")
 
-
             file = open(self.filename, "a")
-            file.write(time)
-            file.write(entry)
-            
-
-            print("\nEntry added successfully!")
-
-        except IOError as e:
-            print("Error added entry:", e)
+            file.write(time + " " + entry + "\n")
+            file.close()
+            print("Entry added successfully.")
+        except Exception:
+            print("Error while adding entry.")
 
     def view_entry(self):
         try:
-            with open(self.filename, "r") as file:
-                print("\nYour Journal Entries:")
-                print("-------------------------------------")
-                print(file.read())
-                
-
+            file = open(self.filename, "r")
+            print("\nYour Journal Entries:")
+            print("-------------------------------------")
+            print(file.read())
+            
         except FileNotFoundError:
-            print("No journal entries found. Start by adding a new entry!")
-        except IOError as e:
-            print("Error:", e)
+            print("The journal file does not exist. Please add a new entry first ")
+        except Exception:
+            print("Error:")
 
     def search_entry(self):
+        keyword = input("Enter keyword or date to search: ")
         try:
-            keyword = input("Enter keyword or date to search: ")
             file = open(self.filename, "r")
-
             found = False
             for line in file:
                 if keyword.lower() in line.lower():
                     print(line.strip())
                     found = True
-            
-
+            file.close()
             if not found:
                 print("No matching entries found.")
-                file.close()
-
         except FileNotFoundError:
-            print("Journal file not exist.")
-        except IOError as e:
-            print("Error:", e)
+            print("Journal file does not exist.")
+        except Exception:
+            print("Error:")
 
     def delete_entries(self):
-        try:
-            confirm = input("Are you sure you want to delete all entries? (yes/no): ")
-            if confirm.lower() == "yes":
-                with open(self.filename, "w") as file:
-                    print("All journal entries deleted.")
-            else:
-                print("Delete cancelled.")
-        except IOError as e:
-            print("Error while deleting entries.", e)
+        confirm = input("Are you sure you want to delete all entries? (yes/no): ")
+        if confirm.lower() == "yes":
+            try:
+                os.remove(self.filename)
+                print("All journal entries  have been deleted.")
+            except FileNotFoundError:
+                print("Journal file does not exist.")
+            except Exception:
+                print("Error while deleting file.")
+        else:
+            print("Deletion cancelled.")
+
 
 j = journalmanager()
 
@@ -94,7 +91,7 @@ while True:
     elif user == 4:
         j.delete_entries()
     elif user == 5:
-        print("Thank you for using Personal Journal Manager . Goodbye!")
+        print("Thank you for using Personal Journal Manager. Goodbye!")
         break
     else:
-        print("Invalid user Input . Please try again.")
+        print("Invalid option. Please select a valid option from the menu.")
