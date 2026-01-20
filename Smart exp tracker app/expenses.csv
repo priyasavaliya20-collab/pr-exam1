@@ -1,0 +1,27 @@
+Date,Amount,Category,Description
+2025-01-01,250.0,Food,Breakfast
+2025-01-01,120.0,Transport,Bus ticket
+2025-01-02,600.0,Utilities,Electricity bill
+2025-01-02,300.0,Entertainment,Movie
+2025-01-03,450.0,Food,Lunch
+2025-01-03,200.0,Transport,Taxi
+2025-01-04,150.0,Food,Snacks
+2025-01-04,500.0,Entertainment,Concert
+2025-01-05,1000.0,Utilities,Internet bill
+2025-01-05,350.0,Food,Dinner
+2025-01-06,220.0,Transport,Metro
+2025-01-06,400.0,Entertainment,Game
+2025-01-07,700.0,Utilities,Water bill
+2025-01-07,280.0,Food,Groceries
+2025-01-08,150.0,Transport,Auto
+2025-01-08,300.0,Food,Fast food
+2025-01-09,600.0,Entertainment,Shopping
+2025-01-09,900.0,Utilities,Gas bill
+2025-01-10,500.0,Food,Restaurant
+2025-01-10,200.0,Transport,Bus
+2007-09-02,45000.0,sales,no
+2007-09-02,2500.0,sales,very good
+2007-09-02,2500.0,sales,yes
+2007-01-15,90000.0,parchurs,yes
+2007-09-02,45000.0,sales.,yes
+2008-02-01,45000.0,sales,yes
